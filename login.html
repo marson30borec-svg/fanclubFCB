@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fanclub Baníku Ostrava</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Oswald', sans-serif;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.82),
+    rgba(0,0,0,0.9)),
+    url("pozadi.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    background:rgba(0,20,45,0.92);
+    backdrop-filter:blur(5px);
+
+    padding:25px;
+
+    border-bottom:4px solid #00aaff;
+
+    box-shadow:0 5px 25px rgba(0,0,0,0.7);
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+}
+
+header img{
+    width:90px;
+    height:90px;
+
+    filter:
+    drop-shadow(0 0 10px #00aaff);
+}
+
+header h2{
+    font-size:42px;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+    0 0 10px #00aaff,
+    0 0 20px #0088ff;
+}
+
+/* NAVIGATION */
+
+nav{
+    margin-top:25px;
+}
+
+nav ul{
+    list-style:none;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+nav ul li a{
+    text-decoration:none;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border:2px solid #00aaff;
+
+    border-radius:50px;
+
+    background:rgba(0,85,170,0.2);
+
+    transition:0.35s;
+
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+nav ul li a:hover{
+    background:#00aaff;
+    color:black;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 20px #00aaff;
+}
+
+/* HERO */
+
+main{
+    padding:70px 20px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.hero h1{
+    font-size:90px;
+
+    color:#00aaff;
+
+    letter-spacing:8px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+    0 0 10px #00aaff,
+    0 0 25px #00aaff,
+    0 0 40px black;
+}
+
+.hero p{
+    margin-top:20px;
+
+    font-size:28px;
+
+    color:#dddddd;
+
+    letter-spacing:4px;
+}
+
+/* INFO BOX */
+
+.info{
+    max-width:1000px;
+
+    margin:auto;
+    margin-bottom:70px;
+
+    padding:35px;
+
+    background:rgba(0,0,0,0.55);
+
+    border-left:5px solid #00aaff;
+
+    border-radius:20px;
+
+    box-shadow:0 0 25px rgba(0,0,0,0.6);
+
+    text-align:center;
+}
+
+.info h3{
+    font-size:38px;
+
+    color:#00aaff;
+
+    margin-bottom:20px;
+}
+
+.info p{
+    font-size:20px;
+
+    line-height:1.8;
+
+    color:#dddddd;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:35px;
+}
+
+.gallery img{
+    width:280px;
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    border:3px solid #00aaff;
+
+    transition:0.4s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.7);
+}
+
+.gallery img:hover{
+    transform:
+    scale(1.08)
+    rotate(1deg);
+
+    border-color:white;
+
+    box-shadow:
+    0 0 25px #00aaff,
+    0 0 50px #0088ff;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+
+    background:rgba(0,20,45,0.96);
+
+    text-align:center;
+
+    padding:25px;
+
+    border-top:4px solid #00aaff;
+
+    font-size:18px;
+
+    letter-spacing:2px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .hero p{
+        font-size:20px;
+    }
+
+    header h2{
+        font-size:28px;
+    }
+
+    .gallery img{
+        width:90%;
+        height:auto;
+    }
+
+    .logo-box{
+        flex-direction:column;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo-box">
+
+        <img src="fcblogo.png" alt="Logo Baníku">
+
+        <h2>Fanclub Baníku Ostrava</h2>
+
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="novinky.html">Novinky</a></li>
+            <li><a href="udalosti.html">Události</a></li>
+            <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="hero">
+
+        <h1>BANÍČEK</h1>
+
+        <p>
+            Věrnost • Tradice • Ostrava
+        </p>
+
+    </section>
+
+    <section class="info">
+
+        <h3>OSTRAVA JE MODROBÍLÁ</h3>
+
+        <p>
+            Fanoušci Baníku Ostrava patří mezi nejvěrnější v celé republice.
+            Tradice, emoce a atmosféra na stadionu tvoří nezapomenutelný zážitek.
+            Baník není jen klub — Baník je životní styl.
+        </p>
+
+    </section>
+
+    <section class="gallery">
+
+        <img src="fcb 1.jpg" alt="Baník 1">
+
+        <img src="fcb 2.jpg" alt="Baník 2">
+
+        <img src="fcb3.jpg" alt="Baník 3">
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 FC Baník Ostrava | Všechna práva vyhrazena
+    </p>
+
+</footer>
+
+</body>
+</html>

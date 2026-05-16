@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baník Ostrava - Kalendář</title>
+<style>
+body { font-family: Arial; background:#f4f4f4; text-align:center; }
+header { background:#003366; color:white; padding:15px; }
+.controls button { padding:10px; font-size:18px; margin:5px; cursor:pointer; }
+.calendar { max-width:800px; margin:auto; }
+.days, .grid { display:grid; grid-template-columns:repeat(7,1fr); }
+.day { background:white; padding:10px; min-height:80px; border-radius:8px; cursor:pointer; }
+.day:hover { background:#e6f0ff; }
+.today { border:2px solid red; }
+.league { background:#3399ff; color:white; }
+.cup { background:#ff9933; color:white; }
+.event-box { max-width:600px; margin:20px auto; background:white; padding:15px; border-radius:10px; display:none; }
+</style>
+</head>
+<body>
+
+<header><h1 id="monthTitle">Duben 2026</h1></header>
+<div class="controls">
+<button onclick="prevMonth()">←</button>
+<button onclick="nextMonth()">→</button>
+</div>
+
+<div class="calendar">
+<div class="days">
+<div>Po</div><div>Út</div><div>St</div><div>Čt</div><div>Pá</div><div>So</div><div>Ne</div>
+</div>
+<div class="grid" id="calendar"></div>
+</div>
+
+<div id="eventBox" class="event-box"></div>
+
+<script>
+let currentDate = new Date(2026,3); // duben 2026
+const months = ["Leden","Únor","Březen","Duben","Květen","Červen","Červenec","Srpen","Září","Říjen","Listopad","Prosinec"];
+
+const matches = {
+    "2026-04-05": { text:"FCB vs Slavia", type:"league", comp:"chance liga", time:"15:30" },
+    "2026-04-11": { text:"FCB vs Jablonec", type:"league", comp:"chance liga", time:"15:00" },
+    "2026-04-18": { text:"FCB vs Bohemians", type:"league", comp:"chance liga", time:"15:00" },
+    "2026-04-22": { text:"Karviná vs FCB", type:"cup", comp:"Mol Cup", time:"18:00" },
+    "2026-04-25": { text:"FCB vs Plzeň", type:"league", comp:"chance liga", time:"15:00" }
+};
+
+function renderCalendar(){
+    const calendar = document.getElementById("calendar");
+    calendar.innerHTML = "";
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    document.getElementById("monthTitle").innerText = months[month] + " " + year;
+
+    let firstDay = new Date(year, month, 1).getDay();
+    firstDay = (firstDay === 0)? 6 : firstDay-1; // Po=0
+
+    const daysInMonth = new Date(year, month+1, 0).getDate();
+    const todayStr = new Date().toISOString().split("T")[0];
+
+    for(let i=0;i<firstDay;i++) calendar.innerHTML += "<div></div>";
+
+    for(let d=1; d<=daysInMonth; d++){
+        const div = document.createElement("div");
+        div.classList.add("day");
+
+        const dateStr = year+"-"+String(month+1).padStart(2,'0')+"-"+String(d).padStart(2,'0');
+
+        if(dateStr === todayStr) div.classList.add("today");
+
+        if(matches[dateStr]){
+            div.classList.add(matches[dateStr].type);
+            div.onclick = ()=>showEvent(dateStr);
+        }
+
+        div.innerHTML = "<strong>"+d+"</strong>";
+        calendar.appendChild(div);
+    }
+}
+
+function showEvent(date){
+    const e = matches[date];
+    const box = document.getElementById("eventBox");
+    box.innerHTML = `<h2>${e.text}</h2><p><strong>${e.comp}</strong></p><p>🕒 ${e.time}</p><p>📅 ${date}</p>`;
+    box.style.display = "block";
+}
+
+function prevMonth(){ currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(); }
+function nextMonth(){ currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(); }
+
+renderCalendar();
+</script>
+</body>
+</html>
